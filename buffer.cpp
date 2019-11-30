@@ -6,9 +6,11 @@
 Buffer::Buffer()
 {
   handleData origB(new PieceData("", RO));
-  this->content      = PieceTable(origB);
-  this->window_start = 0;
-  this->cursorPos    = 0;
+  this->content        = PieceTable(origB);
+  this->window_start   = 0;
+  this->cursorPos      = 0;
+  this->mark           = 0;
+  this->mark_activated = false;
 }
 
 

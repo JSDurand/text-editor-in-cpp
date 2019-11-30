@@ -1,4 +1,4 @@
-#include "iostream"
+#include <iostream>
 #include "editor.h"
 #include "resource_manager.h"
 #include "text_renderer.h"
@@ -78,6 +78,10 @@ void Editor::Render()
 {
   Text->RenderText(this->buffer.SubString(0).c_str(), 10, 10, 1, glm::vec3(1.0f),
                    this->cursorPos, *BoxRend, this->buffer.WindowStart());
+
+  if (this->buffer.mark_activated) {
+    std::cout << "marked" << std::endl;
+  }
   // std::cout << this->buffer.to_string() << std::endl;
   // std::cout << this->buffer.SubString(this->buffer.WindowStart()) << std::endl;
 }

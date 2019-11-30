@@ -27,6 +27,8 @@ void char_callback(GLFWwindow *window, unsigned int codepoint);
 
 void frame_buffer_size_callback(GLFWwindow *window, int width, int height);
 
+void mouse_button_callback(GLFWwindow *window, int button, int action, int mode);
+
 Editor editor(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 int main(int argc, char **argv)
@@ -57,6 +59,7 @@ int main(int argc, char **argv)
   glfwSetKeyCallback(window, key_callback);
   glfwSetCharCallback(window, char_callback);
   glfwSetFramebufferSizeCallback(window, frame_buffer_size_callback);
+  glfwSetMouseButtonCallback(window, mouse_button_callback);
 
   glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
   glEnable(GL_CULL_FACE);
@@ -141,4 +144,17 @@ void frame_buffer_size_callback(GLFWwindow *window, int width, int height)
 {
   glViewport(0, 0, width, height);
   editor.resize(width, height);
+}
+
+void mouse_button_callback(GLFWwindow *window, int button, int action, int mode)
+{
+  if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+    // TODO: how to know the corresponding position for the cursor position?
+    // editor.mark = 
+    cout << "Pressed" << endl;
+  }
+
+  if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
+    cout << "Released" << endl;
+  }
 }

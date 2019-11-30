@@ -31,6 +31,8 @@ public:
   }
 
   int cursorPos;
+  int mark;
+  bool mark_activated;
 
 private:
   PieceTable content;

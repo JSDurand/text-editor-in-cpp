@@ -1,0 +1,13 @@
+clang
+-Wno-pragma-once-outside-header
+-std=c++14
+-I/Users/durand/Desktop/Centre/A\ propos\ de\ programmes/CPP/breakout/include
+-L/Users/durand/Desktop/Centre/A\ propos\ de\ programmes/CPP/breakout/lib-macos
+-lglfw3
+-lfreetype
+-frameworkCocoa
+-frameworkOpenGL
+-frameworkIOKit
+-frameworkCoreVideo
+%h -x
+%h c++-heade

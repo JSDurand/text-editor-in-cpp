@@ -1,25 +1,29 @@
 #include "buffer.h"
+#include "cursor.h"
+#include "piece.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
 Buffer::Buffer()
+  : mark (cursor{0})
 {
   handleData origB(new PieceData("", RO));
-  this->content        = PieceTable(origB);
-  this->window_start   = 0;
-  this->cursorPos      = 0;
-  this->mark           = 0;
-  this->mark_activated = false;
+  this->content              = PieceTable(origB);
+  this->window_start         = 0;
+  this->cursorPos            = 0;
+  this->mark_activated       = false;
 }
 
 
 Buffer::Buffer(std::string content)
+  : mark(cursor{0})
 {
   handleData origB(new PieceData(content, RO));
-  this->content      = PieceTable(origB);
-  this->window_start = 0;
-  this->cursorPos    = 0;
+  this->content              = PieceTable(origB);
+  this->window_start         = 0;
+  this->cursorPos            = 0;
+  this->mark_activated       = false;
 }
 
 Buffer::~Buffer()
@@ -62,7 +66,9 @@ int Buffer::Length()
 
 void Buffer::load_file(const std::string str)
 {
-  if (this->modified) { // ask to save file; ignore for now.
+  if (this->modified) {
+  // TODO: ask to save file; ignore for now, since I haven't implemented the
+  // mechanism to change this parameter.
   }
     
   std::fstream file(str);

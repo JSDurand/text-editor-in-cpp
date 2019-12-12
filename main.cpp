@@ -150,8 +150,11 @@ void mouse_button_callback(GLFWwindow *window, int button, int action, int mode)
 {
   if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
     // TODO: how to know the corresponding position for the cursor position?
-    // editor.mark = 
+    double xp, yp;
+    glfwGetCursorPos(window, &xp, &yp);
+    editor.buffer.mark = Position(xp, yp);
     cout << "Pressed" << endl;
+    cout << "mark, x: " + std::to_string(xp) + ", y: " + std::to_string(yp) << endl;
   }
 
   if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {

@@ -1,7 +1,19 @@
 #include "box.h"
 #include "piece.h"
 #include "text_renderer.h"
+#include "cursor.h"
 #include <string>
+
+// NOTE: This is for storing positions of cursors.
+// This should be replaced by the union cursor.
+struct Position
+{
+  Position (): xPos(0), yPos(0) {};
+  Position (double x, double y): xPos(x), yPos(y) {};
+  double xPos;
+  double yPos;
+};
+
 
 class Buffer
 {
@@ -30,8 +42,9 @@ public:
       this->window_start = 0;
   }
 
+  // TODO: Make cursorPos a cursor type.
   int cursorPos;
-  int mark;
+  cursor mark;
   bool mark_activated;
 
 private:

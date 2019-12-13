@@ -6,23 +6,21 @@
 #include <sstream>
 
 Buffer::Buffer()
-  : mark (cursor{0})
+  : mark (cursor{0}), cursorPos {cursor{0}}
 {
   handleData origB(new PieceData("", RO));
   this->content              = PieceTable(origB);
   this->window_start         = 0;
-  this->cursorPos            = 0;
   this->mark_activated       = false;
 }
 
 
 Buffer::Buffer(std::string content)
-  : mark(cursor{0})
+  : mark(cursor{0}), cursorPos {cursor{0}}
 {
   handleData origB(new PieceData(content, RO));
   this->content              = PieceTable(origB);
   this->window_start         = 0;
-  this->cursorPos            = 0;
   this->mark_activated       = false;
 }
 

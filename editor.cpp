@@ -29,7 +29,8 @@ TextRenderer *Text;
 Box *BoxRend;
 
 Editor::Editor(GLuint width, GLuint height) 
-	: State(GAME_ACTIVE), Keys(), Width(width), Height(height) {}
+	: State(GAME_ACTIVE), Keys(), Width(width), Height(height),
+    buffer(Buffer("Bienvenu au merveilleux\nprogram sur la terre!")) {}
 
 Editor::~Editor() {
 }
@@ -58,7 +59,7 @@ void Editor::Init()
   BoxRend->color = glm::vec4(1.0f, 0.5f, 0.3f, 1.0f);
 
   // buffer
-  this->buffer = Buffer("Bienvenu au merveilleux\nprogram sur la terre!");
+  // this->buffer = Buffer("Bienvenu au merveilleux\nprogram sur la terre!");
   this->buffer.load_file("./main.cpp");
 
   // cursor
@@ -76,8 +77,10 @@ void Editor::ProcessInput()
 
 void Editor::Render()
 {
-  Text->RenderText(this->buffer.SubString(0).c_str(), 10, 10, 1, glm::vec3(1.0f),
-                   this->cursorPos, *BoxRend, this->buffer.WindowStart());
+  // Text->RenderText(this->buffer.SubString(0).c_str(), 10, 10, 1, glm::vec3(1.0f),
+  //                  this->cursorPos, *BoxRend, this->buffer.WindowStart());
+  Text->RenderText(&this->buffer, 10, 10, 1, glm::vec3(1.0f),
+                   *BoxRend, this->buffer.WindowStart());
 
   if (this->buffer.mark_activated) {
     std::cout << "marked" << std::endl;

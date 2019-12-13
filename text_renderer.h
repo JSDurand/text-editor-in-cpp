@@ -8,6 +8,7 @@
 #include "texture.h"
 #include "shader.h"
 #include "box.h"
+#include "buffer.h"
 
 /// Holds all state information relevant to a character as loaded using FreeType
 struct Character {
@@ -35,6 +36,10 @@ public:
   // Renders a string of text using the precompiled list of characters
   void RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale,
                   glm::vec3 color = glm::vec3(1.0f), GLuint cursor = 0,
+                  Box box = Box(0, 0), int offset = 0);
+
+  void RenderText(Buffer *buffer, GLfloat x, GLfloat y, GLfloat scale,
+                  glm::vec3 color = glm::vec3(1.0f),
                   Box box = Box(0, 0), int offset = 0);
 
   int width, height;
